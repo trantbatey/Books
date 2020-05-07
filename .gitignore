@@ -32,3 +32,6 @@ build/
 
 ### Hide properties ###
 src/main/resources/application.properties
+
+### open office backup files ###
+.~*
