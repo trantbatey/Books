@@ -3,10 +3,8 @@ package com.codeup.books.controllers;
 import com.codeup.books.model.Book;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,14 +38,19 @@ public class BookController {
     }
 
     @GetMapping("/books/create")
-    @ResponseBody
     public String gotoBookCreationForm() {
-        return "View the form for creating a book entry.";
+        return "/books/create";
     }
 
     @PostMapping("/books/create")
-    @ResponseBody
-    public String createBook() {
-        return "Create a new book entry";
+    public RedirectView createBook(@RequestParam(name = "title") String title,
+                             @RequestParam(name = "description") String description,
+                             Model model) {
+        Book book = new Book();
+        book.setTitle(title);
+        book.setDescription(description);
+        System.out.println(book.getTitle());
+        System.out.println(book.getDescription());
+        return new RedirectView("/books");
     }
 }
