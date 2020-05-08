@@ -1,40 +1,40 @@
 package com.codeup.books.controllers;
 
 import com.codeup.books.model.Book;
+import com.codeup.books.model.BookRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Controller
 public class BookController {
+    private final BookRepository bookDao;
+
+    public BookController(BookRepository bookDao) {
+        this.bookDao = bookDao;
+    }
 
     @GetMapping("/books")
     public String showBooks(Model model) {
-        List<Book> bookList = new ArrayList<>();
-        Book book = new Book();
-        book.setTitle("Twilight");
-        book.setDescription("The biting story of how a high school transfer coed falls in love with a vampire.");
-        bookList.add(book);
-        book = new Book();
-        book.setTitle("The Host");
-        book.setDescription("An alien and a human fight each other for control of their body.");
-        bookList.add(book);
-
-        model.addAttribute("books", bookList);
+        model.addAttribute("books", bookDao.findAll());
         return "books/index";
     }
 
     @GetMapping("/books/{id}")
-    public String showBook(@PathVariable int id, Model model) {
-        Book book = new Book();
-        book.setTitle("Twilight");
-        book.setDescription("The biting story of how a high school transfer coed falls in love with a vampire.");
-        model.addAttribute("book", book);
+    public String showBook(@PathVariable long id, Model model) {
+        model.addAttribute("book", bookDao.findById(id));
         return "books/show";
+    }
+
+    @PostMapping("/books/edit/{title}")
+    public String gotoEditBook(@PathVariable String title, Model model) {
+        model.addAttribute("book", bookDao.findByTitle(title));
+        return "books/edit";
     }
 
     @GetMapping("/books/create")

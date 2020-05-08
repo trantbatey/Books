@@ -1,8 +1,19 @@
 package com.codeup.books.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="books")
 public class Book {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
+    @Column(nullable = false, length = 60, unique = true)
     private String title;
+
+    @Column(nullable = false, length = 2000)
     private String description;
 
     public String getTitle() {
