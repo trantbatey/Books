@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:fragment="head">
+        <meta charset="UTF-8" />
+        <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+        <link th:href="@{/css/style.css}" rel="stylesheet">
+    </div>
+</head>
+<body>
+    <!-- awesome navbar goes here -->
+    <!-- A grey horizontal navbar that becomes vertical on small screens -->
+    <nav th:fragment="navbar" class="navbar navbar-default">
+
+        <!-- Links -->
+        <ul class="nav navbar-nav">
+            <li><a href="/home">Home</a></li>
+            <li><a href="/hello/Fortuna">Hello</a></li>
+            <li><a href="/join">Join</a></li>
+            <li><a href="/welcome">Welcome</a></li>
+            <li><a href="/books">Books</a></li>
+        </ul>
+    </nav>
+
+    <standard_scripts th:fragment="footer">
+        <script th:src="@{/js/jquery-3.4.1.min.js}"></script>
+        <script th:src="@{/js/bootstrap.min.js}"></script>
+    </standard_scripts>
+
+</body>
+</html>

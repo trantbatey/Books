@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>List Books</title>
+    <div th:replace="/partials/partials :: head" />
+</head>
+<body>
+<nav th:replace="/partials/partials :: navbar" />
+
+<div class="container">
+    <h1>Book List</h1>
+    <div th:each="book : ${books}">
+        <p style="font-weight: bold" th:text="${book.title}"></p>
+        <p style="padding-left: 2rem;" th:text="${book.description}"></p>
+    </div>
+</div>
+
+<script th:replace="/partials/partials :: footer"/>
+</body>
+</html>

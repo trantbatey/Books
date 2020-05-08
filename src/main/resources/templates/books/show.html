@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Show Book</title>
+    <div th:replace="/partials/partials :: head" />
+</head>
+<body>
+<nav th:replace="/partials/partials :: navbar" />
+
+<div class="container">
+    <h1 th:text="${book.title}"></h1>
+    <p style="padding-left: 2rem;" th:text="${book.description}"></p>
+</div>
+
+<script th:replace="/partials/partials :: footer"/>
+</body>
+</html>
