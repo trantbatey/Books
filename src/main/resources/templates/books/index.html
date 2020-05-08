@@ -8,6 +8,9 @@
 <nav th:replace="/partials/partials :: navbar" />
 
 <div class="container">
+    <div th:if="${message != null}">
+        <h1 th:value="${message}"></h1>
+    </div>
     <h1>Book List</h1>
     <div th:each="book : ${books}">
         <p style="font-weight: bold" th:text="${book.title}"></p>

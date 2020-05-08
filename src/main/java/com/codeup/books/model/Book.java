@@ -16,6 +16,14 @@ public class Book {
     @Column(nullable = false, length = 2000)
     private String description;
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public String getTitle() {
         return title;
     }

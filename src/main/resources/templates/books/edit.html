@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Book</title>
+    <div th:replace="/partials/partials :: head"/>
+</head>
+<body>
+<nav th:replace="/partials/partials :: navbar"/>
+
+<div class="container">
+    <h2>Edit Book</h2>
+
+    <form action="/books/edit" method="post">
+        <input type="hidden" name="id" id="id" th:value="${book.id}"/>
+        <label for="title">Title: </label>
+        <input type="text" name="title" id="title" class="field" th:value="${book.title}"/>
+        <br><br>
+        <label for="desc">Description:</label><br>
+        <textarea name="description" id="desc" class="field" rows="4" cols="50"
+                  th:text="${book.description}"></textarea><br>
+        <button>Save</button>
+    </form>
+</div>
+
+<script th:replace="/partials/partials :: footer"/>
+</body>
+</html>
